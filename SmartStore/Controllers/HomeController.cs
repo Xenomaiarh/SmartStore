@@ -8,7 +8,7 @@ namespace SmartStore.Controllers
 {
     public class HomeController : Controller
     {
-        // GET: Home
+        // GET: Homee
         public ActionResult Index()
         {
             return View();
