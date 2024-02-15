@@ -27,6 +27,19 @@ namespace SmartStore.App_Start
             bundles.Add(new StyleBundle("~/bundles/css/icons.min.css").Include("~/Content/css/icons.min.css", new CssRewriteUrlTransform()));
             bundles.Add(new StyleBundle("~/bundles/css/app.min.css").Include("~/Content/css/app.min.css", new CssRewriteUrlTransform()));
             bundles.Add(new StyleBundle("~/bundles/vectormap/jquery-jvectormap.css").Include("~/Content/css/jquery-jvectormap.css", new CssRewriteUrlTransform()));
+
+
+            ///////////////////////
+            ///REGISTRATION PAGE///
+            ///////////////////////
+
+            bundles.Add(new StyleBundle("~/regBundle/css/styleRegistration.css").Include("~/Content/css/styleRegistration.css", new CssRewriteUrlTransform()));
+            bundles.Add(new ScriptBundle("~/regBundle/js/mainRegistration.js").Include("~/Scripts/js/mainRegistration.js"));
+            bundles.Add(new ScriptBundle("~/regBundle/lib/jquery/jquery.min.js").Include("~/Scripts/lib/jquery/jquery.min.js"));
+            //mainRegistration.js
+            //jquery/jquery.min.js
+
+
         }
     }
 }

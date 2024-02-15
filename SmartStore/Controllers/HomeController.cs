@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SmartStore.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,7 +12,9 @@ namespace SmartStore.Controllers
         // GET: Homee
         public ActionResult Index()
         {
-            return View();
+            Peg tmp = new Peg();
+            tmp.name = "Hi Guys";
+            return View(tmp);
         }
     }
 }
