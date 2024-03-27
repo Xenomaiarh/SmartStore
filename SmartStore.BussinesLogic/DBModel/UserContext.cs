@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SmartStore.BussinesLogic.DBModel.Seed
+namespace SmartStore.BusinessLogic.DBModel.Seed
 {
     public class UserContext : DbContext
     {

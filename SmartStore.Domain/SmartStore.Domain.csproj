@@ -55,7 +55,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
+    <Compile Include="Entities\Products\DBProduct.cs" />
+    <Compile Include="Entities\Products\ProductData.cs" />
     <Compile Include="Entities\Responses\ResponseData.cs" />
+    <Compile Include="Entities\Responses\ResponseNewProduct.cs" />
     <Compile Include="Entities\Responses\ResponseRegisterData.cs" />
     <Compile Include="Entities\User\Session.cs" />
     <Compile Include="Entities\User\UserMinimal.cs" />

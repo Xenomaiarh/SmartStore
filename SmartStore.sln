@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartStore.Web", "SmartStor
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartStore.Domain", "SmartStore.Domain\SmartStore.Domain.csproj", "{BA11A5AF-9F2D-426C-A186-FD628ACCE8C3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartStore.BussinesLogic", "SmartStore.BussinesLogic\SmartStore.BussinesLogic.csproj", "{1DA06CCB-BEA6-4F65-93DB-C705AD6B00CA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartStore.BusinessLogic", "SmartStore.BussinesLogic\SmartStore.BusinessLogic.csproj", "{1DA06CCB-BEA6-4F65-93DB-C705AD6B00CA}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartStore.Helpers", "SmartStore.Helpers\SmartStore.Helpers.csproj", "{71101119-2B79-4FC0-B739-F79BE52A7103}"
 EndProject

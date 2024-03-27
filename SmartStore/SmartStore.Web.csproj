@@ -198,6 +198,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Atributes\AdminAndModer.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MainController.cs" />
@@ -205,6 +206,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Product.cs" />
     <Compile Include="Models\Registration.cs" />
     <Compile Include="Models\Authentification.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -219,13 +221,21 @@
     <None Include="packages.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Scripts\jquery-3.7.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.7.1.min.map" />
     <Content Include="Views\Shared\_Rightbar.cshtml" />
     <Content Include="Views\Main\Login.cshtml" />
     <Content Include="Views\Shared\_SignLayout.cshtml" />
     <Content Include="Views\Main\Registration.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Shared\_HomeNavBar.cshtml" />
+    <Content Include="Views\Shared\_HomeLayout.cshtml" />
+    <Content Include="Views\Home\Cart.cshtml" />
+    <Content Include="Views\Shared\_HomeFooter.cshtml" />
+    <Content Include="Views\Shared\_HomeCart.cshtml" />
+    <Content Include="Views\Shared\_HomeProfile.cshtml" />
+    <Content Include="Views\Home\Profile.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -240,9 +250,9 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SmartStore.BussinesLogic\SmartStore.BussinesLogic.csproj">
+    <ProjectReference Include="..\SmartStore.BussinesLogic\SmartStore.BusinessLogic.csproj">
       <Project>{1da06ccb-bea6-4f65-93db-c705ad6b00ca}</Project>
-      <Name>SmartStore.BussinesLogic</Name>
+      <Name>SmartStore.BusinessLogic</Name>
     </ProjectReference>
     <ProjectReference Include="..\SmartStore.Domain\SmartStore.Domain.csproj">
       <Project>{ba11a5af-9f2d-426c-a186-fd628acce8c3}</Project>
