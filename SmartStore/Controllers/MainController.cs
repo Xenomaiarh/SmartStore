@@ -34,24 +34,26 @@ namespace SmartStore.Controllers
         public ActionResult Form(Registration data)
         {
 
-            var UserLoginData = new LoginData
+            var UserLoginData = new LoginData()
             {
-                Credentials = data.name,
+                name = data.name,
+                email = data.email,
                 Password = data.pass,
                 LoginIP = HttpContext.Request.UserHostAddress,
                 LoginDateTime = DateTime.Now,
             };
+
             ResponseData response = session.UserLogin(UserLoginData);
 
             if (response != null && response.Status)
             {
                 Session["UserName"] = response.User.name;
-                return RedirectToAction("Index", "Main");
+                return RedirectToAction("Index", "Home");
             }
 
             int y = 0;
-            return View();
-            //return RedirectToAction("Index", "Main");
+            //return View();
+            return RedirectToAction("Login", "Main");
         }
     }
 }

@@ -13,14 +13,19 @@ namespace SmartStore.BussinesLogic.Core
     {
         internal ResponseData UserValidateSession(LoginData data)
         {
+            var testUser = new DBUser
+            {
+                name = "Admin",
+                email = "admin@xenomaiarh.ru",
+                pass = "test"
+            };
+
+            var status = (testUser.email == data.email && testUser.name == data.name && testUser.pass == data.Password) ? true : false;
+
             return new ResponseData
             {
-                User = new DBUser
-                {
-                    name = "Admin",
-                    email = "admin@xenomaiarh.ru",
-                    pass = "test"
-                }
+                Status = status,
+                User = testUser
             };
         }
     }
