@@ -8,7 +8,7 @@
         <div class="signup-content">
             <div class="signup-form">
                 <h2 class="form-title">Sign up</h2>
-                @using (Ajax.BeginForm("Form", "Main", new AjaxOptions { HttpMethod = "POST", OnSuccess = "success", OnFailure = "fail", UpdateTargetId = "resultTarget" }))
+                @using (Ajax.BeginForm("Registration", "Main", new AjaxOptions { HttpMethod = "POST", OnSuccess = "success", OnFailure = "fail", UpdateTargetId = "resultTarget" }))
                 {
                     @model SmartStore.Models.Registration
                     <form method="POST" class="register-form" id="register-form">

@@ -7,10 +7,11 @@ using SmartStore.Models;
 using SmartStore.BusinessLogic.Interfaces;
 using SmartStore.Domain.Entities.Responses;
 using SmartStore.Domain.Entities.User;
+using System.Web.UI.WebControls;
 
 namespace SmartStore.Controllers
 {
-    public class MainController : Controller
+    public class MainController : BaseController
     {
         // GET: Main
         internal ISession session;
@@ -29,11 +30,34 @@ namespace SmartStore.Controllers
         {
             return View();
         }
+        public ActionResult Form()
+        {
+            return View();
+        }
 
         [HttpPost]
-        public ActionResult Form(Registration data)
+        public ActionResult Registration(Registration data)
         {
+            var UserRegisterData = new RegisterData
+            {
+                UserName = data.name,
+                Password = data.pass,
+                LoginIP = HttpContext.Request.UserHostAddress,
+                RegisterDateTime = DateTime.Now,
+                Email = data.email,
+            };
+            ResponseRegisterData response = session.UserRegister(UserRegisterData);
 
+            if (response != null && response.Status)
+            {
+                return RedirectToAction("Form", "Main");
+            }
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Form(Authentification data)
+        {
             var UserLoginData = new LoginData
             {
                 Credentials = data.name,
@@ -45,13 +69,12 @@ namespace SmartStore.Controllers
 
             if (response != null && response.Status)
             {
-                Session["UserName"] = response.User.name;
-                return RedirectToAction("Index", "Main");
+                HttpCookie cookie = session.GenCookie(data.name);
+                ControllerContext.HttpContext.Response.Cookies.Add(cookie);
+                return RedirectToAction("Index", "Home");
             }
-
-            int y = 0;
             return View();
-            //return RedirectToAction("Index", "Main");
         }
+
     }
 }

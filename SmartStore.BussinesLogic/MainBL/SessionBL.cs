@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 
 namespace SmartStore.BussinesLogic
 {
@@ -17,5 +18,19 @@ namespace SmartStore.BussinesLogic
             return UserValidateSession(data);
         }
 
+        public ResponseRegisterData UserRegister(RegisterData userRegisterData)
+        {
+            return UserRegisterAction(userRegisterData);
+        }
+
+        public HttpCookie GenCookie(string loginCredential)
+        {
+            return Cookie(loginCredential);
+        }
+
+        public UserMinimal GetUserByCookie(string apiCookieValue)
+        {
+            return UserCookie(apiCookieValue);
+        }
     }
 }

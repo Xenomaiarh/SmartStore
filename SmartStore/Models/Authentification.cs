@@ -5,11 +5,10 @@ using System.Web;
 
 namespace SmartStore.Models
 {
-    public class Registration
+    public class Authentification
     {
         public int ID { get; set; }
         public string name { get; set; }
-        public string email { get; set; }
         public string pass { get; set; }
     }
 }

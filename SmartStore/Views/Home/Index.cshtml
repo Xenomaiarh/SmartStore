@@ -1,9 +1,5 @@
 ﻿@Ajax.BeginForm("Form", "Home", new AjaxOptions { HttpMethod = "POST", OnSuccess = "success", OnFailure = "fail", UpdateTargetId = "resultTarget" })
 {
-@model SmartStore.Models.Peg
-    <div>
-        @Model.name
-    </div>
 <form>
     <label for="name">Имя:</label><br>
     <input type="text" id="name" name="name"><br>
