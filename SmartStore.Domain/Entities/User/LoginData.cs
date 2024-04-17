@@ -8,8 +8,8 @@ namespace SmartStore.Domain.Entities.User
 {
     public class LoginData
     {
-        public string name { get; set; }
-        public string email { get; set; }
+        public int ID { get; set; }
+        public string Credentials { get; set; }
         public string Password { get; set; }
         public string LoginIP { get; set; }
         public DateTime LoginDateTime { get; set; }

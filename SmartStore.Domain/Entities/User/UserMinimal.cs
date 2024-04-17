@@ -5,16 +5,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SmartStore.Domain.Entities.User
+namespace SmartStore.Domain.Entities.Responses
 {
-    public class DBUser
+    public class UserMinimal
     {
         public int ID { get; set; }
-        public string UserName { get; set; }
+        public string Username { get; set; }
         public string Email { get; set; }
-        public string Password { get; set; }
+        public DateTime LoginDateTime { get; set; }
         public string LoginIP { get; set; }
-        public DateTime RegisterDateTime { get; set; }
         public URole Level { get; set; }
     }
 }
