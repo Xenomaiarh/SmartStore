@@ -6,7 +6,7 @@
 <div class="addProduct-container">
     <h2 class="form-title">Add Product</h2>
     @using (Ajax.BeginForm("AddProductForm", "Admin", new AjaxOptions { HttpMethod = "POST", OnSuccess = "success", OnFailure = "fail", UpdateTargetId = "resultTarget" }))
-    {
+    { 
         @model SmartStore.Models.Product
         <form method="POST" class="addProduct-form">
             <div class="form-group">
