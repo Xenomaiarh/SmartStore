@@ -1,4 +1,4 @@
-﻿namespace SmartStore.BussinesLogic.Migrations
+﻿namespace SmartStore.BusinessLogic.Migrations
 {
     using System;
     using System.Data.Entity.Migrations;

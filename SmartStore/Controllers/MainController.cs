@@ -30,10 +30,6 @@ namespace SmartStore.Controllers
         {
             return View();
         }
-        public ActionResult Form()
-        {
-            return View();
-        }
 
         [HttpPost]
         public ActionResult Registration(Registration data)
@@ -50,7 +46,7 @@ namespace SmartStore.Controllers
 
             if (response != null && response.Status)
             {
-                return RedirectToAction("Form", "Main");
+                return RedirectToAction("Login", "Main");
             }
             return View();
         }
@@ -65,6 +61,7 @@ namespace SmartStore.Controllers
                 LoginIP = HttpContext.Request.UserHostAddress,
                 LoginDateTime = DateTime.Now,
             };
+
             ResponseData response = session.UserLogin(UserLoginData);
 
             if (response != null && response.Status)
@@ -73,6 +70,7 @@ namespace SmartStore.Controllers
                 ControllerContext.HttpContext.Response.Cookies.Add(cookie);
                 return RedirectToAction("Index", "Home");
             }
+
             return View();
         }
 
