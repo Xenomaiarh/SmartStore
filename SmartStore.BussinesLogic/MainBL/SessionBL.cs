@@ -32,5 +32,9 @@ namespace SmartStore.BussinesLogic
         {
             return UserCookie(apiCookieValue);
         }
+        public ResponseData UserLogout()
+        {
+            return UserLogoutAction();
+        }
     }
 }
