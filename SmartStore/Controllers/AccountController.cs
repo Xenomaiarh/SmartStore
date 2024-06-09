@@ -1,21 +1,20 @@
-﻿using System;
+﻿using SmartStore.BusinessLogic.Interfaces;
+using SmartStore.Domain.Entities.Responses;
+using SmartStore.Domain.Entities.User;
+using SmartStore.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using SmartStore.Models;
-using SmartStore.BusinessLogic.Interfaces;
-using SmartStore.Domain.Entities.Responses;
-using SmartStore.Domain.Entities.User;
-using System.Web.UI.WebControls;
 
 namespace SmartStore.Controllers
 {
-    public class MainController : BaseController
+    public class AccountController : BaseController
     {
-        // GET: Main
+        // GET: Account
         private readonly ISession session;
-        public MainController()
+        public AccountController()
         {
             var BL = new BusinessLogic.BusinessLogic();
             session = BL.getSessionBL();
@@ -46,13 +45,13 @@ namespace SmartStore.Controllers
 
             if (response != null && response.Status)
             {
-                return RedirectToAction("Login", "Main");
+                return RedirectToAction("Login", "Account");
             }
             return View();
         }
 
         [HttpPost]
-        public ActionResult Form(Authentification data)
+        public ActionResult Login(Authentification data)
         {
             var UserLoginData = new LoginData
             {
@@ -61,7 +60,6 @@ namespace SmartStore.Controllers
                 LoginIP = HttpContext.Request.UserHostAddress,
                 LoginDateTime = DateTime.Now,
             };
-
             ResponseData response = session.UserLogin(UserLoginData);
 
             if (response != null && response.Status)
@@ -70,9 +68,32 @@ namespace SmartStore.Controllers
                 ControllerContext.HttpContext.Response.Cookies.Add(cookie);
                 return RedirectToAction("Index", "Home");
             }
-
             return View();
         }
+        public ActionResult Logout()
+        {
+            ResponseData logout = session.UserLogout();
 
+            if (Response.Cookies["X-KEY"] != null)
+            {
+                //var IsUserLoggedIn = false; // Статус аутентификации сохраняется между запросами   
+                //var admin = false;
+                //var moderator = false;
+                //var userId = 0;
+                //Session["UserId"] = userId;
+                //Session["admin"] = admin.ToString(); // Сохраняем роль в сессии
+                //Session["moderator"] = moderator.ToString(); // Сохраняем роль в сессии
+                //["IsUserLoggedIn"] = IsUserLoggedIn.ToString(); // Сохраняем роль в сессии
+
+                var cookie = new HttpCookie("X-KEY")
+                {
+                    Expires = DateTime.Now.AddDays(-1)
+                };
+                Response.Cookies.Add(cookie);
+            }
+
+            // Перенаправляем пользователя на страницу входа
+            return RedirectToAction("Login", "Account");
+        }
     }
 }

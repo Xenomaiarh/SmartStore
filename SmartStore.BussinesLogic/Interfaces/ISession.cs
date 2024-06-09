@@ -15,5 +15,6 @@ namespace SmartStore.BusinessLogic.Interfaces
         ResponseRegisterData UserRegister(RegisterData userRegisterData);
         HttpCookie GenCookie(string loginCredential);
         UserMinimal GetUserByCookie(string apiCookieValue);
+        ResponseData UserLogout();
     }
 }

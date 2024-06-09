@@ -19,29 +19,7 @@ namespace SmartStore.Controllers
             {
                 return RedirectToAction("Login", "Main");
             }
-            //var ProductsList = products.GetProductsData();
-            //return View(ProductsList);
-            return View();
-        }
-
-        public ActionResult Cart()
-        {
-            SessionStatus();
-            if ((string)System.Web.HttpContext.Current.Session["LoginStatus"] != "login")
-            {
-                return RedirectToAction("Login", "Main");
-            }
-            return View();
-        }
-
-        public ActionResult Profile()
-        {
-            SessionStatus();
-            if ((string)System.Web.HttpContext.Current.Session["LoginStatus"] != "login")
-            {
-                return RedirectToAction("Login", "Main");
-            }
-            return View();
+            return View(); // RedirectToAction("Login", "Main");
         }
     }
 }
