@@ -6,17 +6,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SmartStore.Domain.Entities.User;
-using SmartStore.BussinesLogic.DBModel.Seed;
+using SmartStore.BusinessLogic.DBModel.Seed;
 using System.Security.Cryptography.X509Certificates;
 using SmartStore.Helpers;
 using System.ComponentModel.DataAnnotations;
-using SmartStore.BussinesLogic.DBModel;
+using SmartStore.BusinessLogic.DBModel;
 using AutoMapper;
 using System.Web;
 using SmartStore.Domain.Enums;
 
 
-namespace SmartStore.BussinesLogic.Core
+namespace SmartStore.BusinessLogic.Core
 {
     public class UserAPI
     {

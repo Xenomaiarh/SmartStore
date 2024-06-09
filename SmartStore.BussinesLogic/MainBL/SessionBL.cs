@@ -1,5 +1,5 @@
 ﻿using SmartStore.BusinessLogic.Interfaces;
-using SmartStore.BussinesLogic.Core;
+using SmartStore.BusinessLogic.Core;
 using SmartStore.Domain.Entities.User;
 using SmartStore.Domain.Entities.Responses;
 using System;
@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web;
 
-namespace SmartStore.BussinesLogic
+namespace SmartStore.BusinessLogic.MainBL
 {
     public class SessionBL : UserAPI, ISession
     {

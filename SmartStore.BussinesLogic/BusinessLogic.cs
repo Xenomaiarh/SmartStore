@@ -1,4 +1,6 @@
 ﻿using SmartStore.BusinessLogic.Interfaces;
+using SmartStore.BusinessLogic.MainBL;
+using SmartStore.Domain.Entities.Products;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +13,16 @@ namespace SmartStore.BusinessLogic
     {
         public ISession getSessionBL()
         {
-            return new BussinesLogic.SessionBL();
+            return new SessionBL();
+        }
+        public IAddProduct AAddProductBL()
+        {
+            return new AddProductBL
+                ();
+        }
+        public IProduct getProducts()
+        {
+            return new ProductBL();
         }
     }
 }
