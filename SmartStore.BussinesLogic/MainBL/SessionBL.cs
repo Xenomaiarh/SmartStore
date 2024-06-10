@@ -32,5 +32,9 @@ namespace SmartStore.BusinessLogic.MainBL
         {
             return UserCookie(apiCookieValue);
         }
+        public ResponseData UserLogout()
+        {
+            return UserLogoutAction();
+        }
     }
 }

@@ -152,6 +152,31 @@ namespace SmartStore.BusinessLogic.Core
             
             return userminimal;
         }
+        internal ResponseData UserLogoutAction()
+        {
+            var response = new ResponseData { Status = false };
+
+            try
+            {
+                var httpContext = HttpContext.Current;
+                if (httpContext != null && httpContext.Request.Cookies["X-KEY"] != null)
+                {
+                    var cookie = new HttpCookie("X-KEY")
+                    {
+                        Expires = DateTime.Now.AddDays(-1)
+                    };
+                    HttpContext.Current.Response.Cookies.Add(cookie);
+                    response.Status = true;
+                    response.Message = "User successfully logged out.";
+                }
+            }
+            catch (Exception ex)
+            {
+                response.Status = false;
+                response.Message = $"An error occurred: {ex.Message}";
+            }
+            return response;
+        }
     }
 }
 

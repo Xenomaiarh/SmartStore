@@ -14,7 +14,7 @@ namespace SmartStore.Controllers
     public class MainController : BaseController
     {
         // GET: Main
-        internal ISession session;
+        private readonly ISession session;
         public MainController()
         {
             var BL = new BusinessLogic.BusinessLogic();

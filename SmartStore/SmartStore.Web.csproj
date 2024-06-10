@@ -411,7 +411,7 @@
     <Content Include="Scripts\jquery-3.7.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.7.1.min.map" />
     <Content Include="Views\Shared\_Rightbar.cshtml" />
-    <Content Include="Views\Main\Login.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Shared\_SignLayout.cshtml" />
     <Content Include="Views\Main\Registration.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
