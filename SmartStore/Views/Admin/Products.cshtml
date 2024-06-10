@@ -1,0 +1,82 @@
+﻿@{
+    Layout = "../Shared/_Layout.cshtml";
+    ViewBag.Title = "SmartStore | AdminPanel";
+}
+
+
+<style>
+    .container {
+        margin-top: 20px;
+    }
+
+    .table th, .table td {
+        vertical-align: middle;
+    }
+
+    .role-select {
+        width: 100%;
+    }
+</style>
+@model List<SmartStore.Models.Product>
+@using System.Web.Optimization
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - Products</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+    <style>
+        .container {
+            margin-top: 20px;
+        }
+
+        .table th, .table td {
+            vertical-align: middle;
+        }
+
+        .product-image {
+            width: 100px;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1 class="text-center mb-4">Admin Panel - Products</h1>
+        <table class="table table-bordered table-hover">
+            <thead class="thead-light">
+                <tr>
+                    <th>Product ID</th>
+                    <th>Product Name</th>
+                    <th>Product Description</th>
+                    <th>Product Price</th>
+                    <th>Product Category</th>
+                    <th>Product Picture</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var product in Model)
+                {
+                    <tr>
+                        <td>@product.ID</td>
+                        <td>@product.ProductName</td>
+                        <td>@product.ProductDescription</td>
+                        <td>$@product.ProductPrice</td>
+                        <td>@product.ProductCategory</td>
+                        <td>
+                            <img src="@product.ProductPicture" alt="Product Image" class="product-image">
+                        </td>
+                        <td>
+                            <button class="btn btn-danger delete-product-btn" data-product-id="@product.ID">
+                                <i class="fas fa-trash-alt"></i> Delete
+                            </button>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
