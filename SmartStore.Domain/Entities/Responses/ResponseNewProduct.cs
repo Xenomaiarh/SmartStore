@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SmartStore.Domain.Entities.Orders;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,5 +11,9 @@ namespace SmartStore.Domain.Entities.Responses
     {
         public bool Status { get; set; }
         public string Message { get; set; }
+
+        public Order Order { get; set; }
+        public List<Order> Orders { get; set; }
+        public Order OneOrder;
     }
 }

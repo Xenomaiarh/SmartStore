@@ -3,44 +3,93 @@
     ViewBag.Title = "SmartStore | AdminPanel";
 }
 
-<div class="addProduct-container">
-    <h2 class="form-title">Add Product</h2>
-    @using (Ajax.BeginForm("AddProductForm", "Admin", new AjaxOptions { HttpMethod = "POST", OnSuccess = "success", OnFailure = "fail", UpdateTargetId = "resultTarget" }))
-    { 
-        @model SmartStore.Models.Product
-        <form method="POST" class="addProduct-form">
-            <div class="form-group">
-                <label for="name">Product Name</label>
-                <input type="text"
-                       name="ProductName"
-                       placeholder="Product name"
-                       required />
-            </div>
-            <div class="form-group">
-                <label for="name">Product Description</label>
-                <input type="text" name="ProductDescription" placeholder="Product Description" />
-            </div>
-            <div class="form-group">
-                <label for="name">Product Price</label>
-                <input type="number"
-                       name="ProductPrice"
-                       placeholder="Product Price"
-                       required />
-            </div>
-            <div class="form-group">
-                <label for="ProductCategory">Product Category</label>
-                <select name="ProductCategory" id="ProductCategory">
-                    <option value="default">default</option>
-                    <option value="none">none</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="name">Product Picture</label>
-                <input type="file" name="ProductPicture" placeholder="Product Picture" />
-            </div>
-            <div class="form-group form-button">
-                <input type="submit" name="submit" class="form-submit" value="Submit" />
-            </div>
-        </form>
+
+    <style>
+        .container {
+            margin-top: 20px;
+        }
+        .table th, .table td {
+            vertical-align: middle;
+        }
+        .role-select {
+            width: 100%;
+        }
+    </style>
+<div class="container mt-5">
+    <div class="card">
+        <div class="card-header bg-primary text-white">
+            <h2 class="form-title">Add Product</h2>
+        </div>
+        <div class="card-body">
+            @using (Ajax.BeginForm("AddProductForm", "Admin", new AjaxOptions
+            {
+                HttpMethod = "POST",
+                OnSuccess = "success",
+                OnFailure = "fail",
+                UpdateTargetId = "resultTarget"
+            }, new { enctype = "multipart/form-data" }))
+            {
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="ProductName">Product Name</label>
+                        <input type="text" class="form-control" id="ProductName" name="ProductName" placeholder="Product name" required />
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="ProductDescription">Product Description</label>
+                        <input type="text" class="form-control" id="ProductDescription" name="ProductDescription" placeholder="Product Description" />
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <label for="ProductPrice">Product Price</label>
+                        <input type="number" class="form-control" id="ProductPrice" name="ProductPrice" placeholder="Product Price" required />
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="ProductCategory">Product Category</label>
+                        <select class="form-control" id="ProductCategory" name="ProductCategory">
+                            <option value="default">default</option>
+                            <option value="none">none</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="image-file">Product Picture</label>
+                        <div class="custom-file">
+                            <input type="file" class="custom-file-input" id="image-file" name="ImageFile">
+                            <label class="custom-file-label" for="image-file">Choose file</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-success btn-block">Submit</button>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+<style>
+    .form-title {
+        margin-bottom: 0;
     }
-</div>;
+
+    .card {
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-control,
+    .custom-file {
+        margin-top: 10px;
+    }
+
+    .btn-block {
+        margin-top: 20px;
+    }
+</style>
+
+<script>
+    document.querySelector('.custom-file-input').addEventListener('change', function(e) {
+        var fileName = document.getElementById("image-file").files[0].name;
+        var nextSibling = e.target.nextElementSibling;
+        nextSibling.innerText = fileName;
+    });
+</script>

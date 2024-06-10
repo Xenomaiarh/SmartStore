@@ -10,6 +10,9 @@ namespace SmartStore.BusinessLogic.Interfaces
 {
     public interface IAddProduct
     {
-        void CreateNewProduct(ProductData productData);
+        Task<ResponseSupport> ChangeUserRole(int userId, string newRole);
+        ResponseNewProduct CreateNewProduct(ProductData productData);
+        Task<ResponseSupport> DeleteUserAction(int userId);
+        Task<ResponseSupport> GetAdminPanelUsers(int currentUserId);
     }
 }
