@@ -50,5 +50,22 @@ namespace SmartStore.Controllers
                 System.Web.HttpContext.Current.Session["LoginStatus"] = "logout";
             }
         }
+
+        public int GetUserId()
+        {
+            var cook = Request.Cookies["X-KEY"]?.Value;
+
+            var user = _session.GetUserByCookie(cook);
+            if (user != null)
+            {
+                var userId = user.ID;
+
+                Session["UserId"] = userId; // где userId - это идентификатор пользователя
+                return userId;
+            }
+
+            // Возвращаем специальное значение, чтобы показать, что пользователь не был найден
+            return -1;
+        }
     }
 }

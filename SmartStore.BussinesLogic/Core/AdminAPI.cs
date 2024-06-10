@@ -1,5 +1,6 @@
 ﻿using SmartStore.BusinessLogic.DBModel;
 using SmartStore.Domain.Entities.Products;
+using SmartStore.Domain.Entities.Responses;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,24 +12,35 @@ namespace SmartStore.BusinessLogic.Core
     public class AdminAPI
     {
         public AdminAPI() { }
-        public void CreateNewProduct(ProductData NewProduct)
+        public ResponseNewProduct CreateNewProduct(ProductData products)
         {
-
-            var newProduct = new DBProduct
+            if (products == null)
             {
-                ProductName = NewProduct.ProductName,
-                ProductDescription = NewProduct.ProductDescription,
-                ProductCategory = NewProduct.ProductCategory,
-                ProductPicture = NewProduct.ProductPicture,
-                ProductPrice = NewProduct.ProductPrice,
+                string Error = "Error to add product";
+                return new ResponseNewProduct { Status = false, Message = Error };
+            }
+
+
+            var product = new DBProduct()
+            {
+                ProductName = products.ProductName,
+                ProductPicture = products.ProductPicture,
+                ProductCategory = products.ProductCategory, // Используем цену с учетом скидки
+                ProductDescription = products.ProductDescription,
+                ProductPrice = products.ProductPrice,
+                ID = products.ID,
+                isAvailable = products.isAvailable,
+
+
             };
 
-            using (var DbContext = new ProductContext())
+            using (var db = new ProductContext())
             {
-                DbContext.Products.Add(newProduct);
-                DbContext.SaveChanges();
-
+                db.Products.Add(product);
+                db.SaveChanges();
             }
+
+            return new ResponseNewProduct { Status = true };
         }
     }
 }

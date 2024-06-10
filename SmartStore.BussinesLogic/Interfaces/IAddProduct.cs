@@ -10,6 +10,6 @@ namespace SmartStore.BusinessLogic.Interfaces
 {
     public interface IAddProduct
     {
-        void CreateNewProduct(ProductData productData);
+        ResponseNewProduct CreateNewProduct(ProductData productData);
     }
 }

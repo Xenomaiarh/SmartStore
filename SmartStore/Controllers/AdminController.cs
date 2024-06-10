@@ -9,6 +9,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.IO;
+using System.Web.UI.WebControls;
+using AutoMapper;
 
 namespace SmartStore.Controllers
 {
@@ -35,20 +38,40 @@ namespace SmartStore.Controllers
         }
 
         [HttpPost]
-        public ActionResult AddProductForm(Product data)
+        public ActionResult AddProductForm(Product product, HttpPostedFileBase ImageFile)
         {
-            var newProductData = new ProductData
+
+            // Проверка на наличие и тип файла
+            if (ImageFile != null && ImageFile.ContentLength > 0 && ImageFile.ContentType.StartsWith("image"))
             {
-                ProductName = data.ProductName,
-                ProductDescription = data.ProductDescription,
-                ProductPrice = data.ProductPrice,
-                ProductCategory = data.ProductCategory,
-                ProductPicture = data.ProductPicture,
-            };
-            _addProduct.CreateNewProduct(newProductData);
+                var uploadPath = Server.MapPath("~/img/product");
+                var fileName = Path.GetFileName(ImageFile.FileName);
+                var filePath = Path.Combine(uploadPath, fileName);
+                ImageFile.SaveAs(filePath);
 
+                product.ProductPicture = Url.Content(Path.Combine("~/img/product", fileName));
+            }
+            else
+            {
+                ModelState.AddModelError("", "Please upload a valid image file.");
+                return View("~/Views/Home/AddProduct.cshtml", product);
+            }
 
-            return RedirectToAction("Index", "Admin");
+            Mapper.Initialize(cfg => cfg.CreateMap<Models.Product, ProductData>());
+            var AdminAddProduct = Mapper.Map<ProductData>(product);
+
+            ResponseNewProduct response = _addProduct.CreateNewProduct(AdminAddProduct);
+            if (response != null && response.Status)
+            {
+                return RedirectToAction("Index", "Admin");
+            }
+            else
+            {
+                ModelState.AddModelError("", "Failed to add the product. Please try again.");
+                return View("~/Views/Home/AddProduct.cshtml", product);
+            }
+
+   
         }
 
     }

@@ -1,4 +1,5 @@
-﻿using SmartStore.Domain.Enums;
+﻿using SmartStore.Domain.Entities.Orders;
+using SmartStore.Domain.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,5 +17,6 @@ namespace SmartStore.Domain.Entities.User
         public string LoginIP { get; set; }
         public DateTime RegisterDateTime { get; set; }
         public URole Level { get; set; }
+        public ICollection<Order> Orders { get; set; }
     }
 }

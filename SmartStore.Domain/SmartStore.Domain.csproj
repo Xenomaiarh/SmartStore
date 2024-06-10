@@ -55,6 +55,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
+    <Compile Include="Entities\Orders\Order.cs" />
     <Compile Include="Entities\Products\DBProduct.cs" />
     <Compile Include="Entities\Products\ProductData.cs" />
     <Compile Include="Entities\Responses\ResponseData.cs" />
@@ -65,6 +66,7 @@
     <Compile Include="Entities\User\DBUser.cs" />
     <Compile Include="Entities\User\LoginData.cs" />
     <Compile Include="Entities\User\RegisterData.cs" />
+    <Compile Include="Enums\OrderStatus.cs" />
     <Compile Include="Enums\URole.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -1,4 +1,5 @@
 ﻿using SmartStore.Domain.Entities.Products;
+using SmartStore.Domain.Entities.Responses;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,7 @@ namespace SmartStore.BusinessLogic.Interfaces
 {
     public interface IProduct
     {
-        List<ProductData> GetProductsData();
+        ResponseData GetProductsData();
+        ResponseNewProduct PurchaseProduct(int userId, int productId, int quantity);
     }
 }

@@ -1,4 +1,4 @@
-﻿namespace SmartStore.BusinessLogic.Migrations
+﻿namespace SmartStore.BussinesLogic.Migrations
 {
     using System;
     using System.Data.Entity;
@@ -10,7 +10,6 @@
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
-            ContextKey = "SmartStore.BusinessLogic.DBModel.Seed.UserContext";
         }
 
         protected override void Seed(SmartStore.BusinessLogic.DBModel.Seed.UserContext context)

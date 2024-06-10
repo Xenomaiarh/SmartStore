@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SmartStore.BusinessLogic.DBModel;
+using SmartStore.Domain.Entities.Responses;
 
 namespace SmartStore.BusinessLogic.MainBL
 {
@@ -21,9 +22,9 @@ namespace SmartStore.BusinessLogic.MainBL
         {
             _productContext = productContext;
         }
-        public void CreareProduct(ProductData NewProduct)
+        public ResponseNewProduct CreateProduct(ProductData NewProduct)
         {
-            CreateNewProduct(NewProduct);
+            return CreateNewProduct(NewProduct);
         }
     }
 }
