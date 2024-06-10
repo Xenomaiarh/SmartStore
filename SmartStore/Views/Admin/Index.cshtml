@@ -1,0 +1,45 @@
+﻿@{
+    Layout = "../Shared/_Layout.cshtml";
+    ViewBag.Title = "SmartStore | AdminPanel";
+}
+
+<div class="addProduct-container">
+    <h2 class="form-title">Add Product</h2>
+    @using (Ajax.BeginForm("AddProductForm", "Admin", new AjaxOptions
+    {
+        HttpMethod = "POST",
+        OnSuccess = "success",
+        OnFailure = "fail",
+        UpdateTargetId = "resultTarget"
+    }, new { enctype = "multipart/form-data" }))
+    {
+        <div style="display:flex; flex-wrap:wrap; justify-content:space-between; align-items:flex-start;">
+            <div class="form-group">
+                <label for="ProductName">Product Name</label>
+                <input type="text" id="ProductName" name="ProductName" placeholder="Product name" required />
+            </div>
+            <div class="form-group">
+                <label for="ProductDescription">Product Description</label>
+                <input type="text" id="ProductDescription" name="ProductDescription" placeholder="Product Description" />
+            </div>
+            <div class="form-group">
+                <label for="ProductPrice">Product Price</label>
+                <input type="number" id="ProductPrice" name="ProductPrice" placeholder="Product Price" required />
+            </div>
+            <div class="form-group">
+                <label for="ProductCategory">Product Category</label>
+                <select id="ProductCategory" name="ProductCategory">
+                    <option value="default">default</option>
+                    <option value="none">none</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="image-file">Product Picture</label>
+                <input type="file" id="image-file" name="ImageFile" placeholder="Product Picture" />
+            </div>
+            <div class="form-group form-button">
+                <input type="submit" name="submit" class="form-submit" value="Submit" />
+            </div>
+        </div>
+    }
+</div>;

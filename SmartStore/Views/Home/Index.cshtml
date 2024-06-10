@@ -1,16 +1,120 @@
-﻿@Ajax.BeginForm("Form", "Home", new AjaxOptions { HttpMethod = "POST", OnSuccess = "success", OnFailure = "fail", UpdateTargetId = "resultTarget" })
-{
-<form>
-    <label for="name">Имя:</label><br>
-    <input type="text" id="name" name="name"><br>
-
-    <label for="email">Email:</label><br>
-    <input type="email" id="email" name="email"><br>
-
-    <label for="message">Сообщение:</label><br>
-    <textarea id="message" name="message" rows="4" cols="50"></textarea><br>
-
-    <button type="submit"> Send </button>
-    <a href="@Url.Action("Index", "Main")">Second page</a>
-</form>
+﻿
+@{
+    Layout = "../Shared/_HomeLayout.cshtml";
+    ViewBag.Title = "SmartStore | Главная";
+    @model List<SmartStore.Models.Product>
 }
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>View</title>
+</head>
+<body>
+    <div class="product-wrapper" data-aos="fade-up" data-aos-delay="200">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="product-slider-default-2rows default-slider-nav-arrow">
+                        <!-- Slider main container -->
+                        <div class="swiper-container product-default-slider-4grid-2row">
+                            <!-- Additional required wrapper -->
+                            <div class="swiper-wrapper">
+                                <!-- Start Product Default Single Item -->
+                                @foreach (var product in Model)
+                                {
+                                    <div class="product-default-single-item product-color--pink swiper-slide">
+                                        <div class="image-box">
+                                            <a href="@Url.Action("Index", "Home")" class="image-link">
+                                                <img src="@product.ProductPicture" alt="">
+                                                <img src="~/Content/assets/images/product/default/home-3/default-2.jpg" alt="">
+                                            </a>
+                                            <div class="tag">
+                                                <span>sale</span>
+                                            </div>
+                                            <div class="action-link">
+                                                <ul class="card-product__imgOverlay">
+                                                    <li>
+                                                        <form class="add-to-cart-form">
+                                                            <input type="hidden" name="productId" value="@product.ID" />
+                                                            <button type="button" class="add-to-cart-btn">
+                                                                <i class="ti-shopping-cart"></i> Добавить в корзину
+                                                            </button>
+                                                        </form>
+                                                    </li>
+                                                </ul>
+                                                <div class="action-link-right">
+                                                    <a href="#" data-bs-toggle="modal"
+                                                       data-bs-target="#modalQuickview">
+                                                        <i class="icon-magnifier"></i>
+                                                    </a>
+                                                    <a href="wishlist.html"><i class="icon-heart"></i></a>
+                                                    <a href="compare.html"><i class="icon-shuffle"></i></a>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="content">
+                                            <div class="content-left">
+                                                <h6 class="title">
+                                                    <a href="@Url.Action("Index", "Home")">
+                                                        @product.ProductName
+                                                    </a>
+                                                </h6>
+                                                <ul class="review-star">
+                                                    <li class="fill"><i class="ion-android-star"></i></li>
+                                                    <li class="fill"><i class="ion-android-star"></i></li>
+                                                    <li class="fill"><i class="ion-android-star"></i></li>
+                                                    <li class="fill"><i class="ion-android-star"></i></li>
+                                                    <li class="empty"><i class="ion-android-star"></i></li>
+                                                </ul>
+                                            </div>
+                                            <div class="content-right">
+                                                <span class="price">$@product.ProductPrice</span>
+                                            </div>
+                                        </div>
+                                    </div><!-- End Product Default Single Item -->}
+                            </div>
+                        </div>
+                        <!-- If we need navigation buttons -->
+                        <div class="swiper-button-prev"></div>
+                        <div class="swiper-button-next"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+<script>
+    $(document).ready(function () {
+        $('.add-to-cart-btn').click(function (e) {
+            e.preventDefault(); // Предотвращаем стандартное действие отправки формы
+
+            var productId = $(this).closest('form').find('input[name="productId"]').val();
+
+            // Отправляем AJAX запрос на сервер
+            $.ajax({
+                url: '/Home/AddProductToCart', // Замените на URL вашего метода контроллера для добавления в корзину
+                method: 'POST',
+                data: { productId: productId, quantity: 1 },
+                success: function (response) {
+                    if (response.success) {
+                        console.error(response);
+                        alert('Товар успешно добавлен в корзину!');
+                        // Можно выполнить дополнительные действия после успешного добавления
+                    } else {
+                        console.error(response);
+                        alert('Ошибка при добавлении товара в корзину: ' + response.errorMessage);
+                    }
+                },
+                error: function (errorData) {
+                    console.error(errorData);
+                    alert('Ошибка при добавлении товара в корзину.');
+                }
+            });
+        });
+    });
+</script>

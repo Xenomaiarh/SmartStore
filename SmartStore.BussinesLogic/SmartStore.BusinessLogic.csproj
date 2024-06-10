@@ -57,10 +57,17 @@
   <ItemGroup>
     <Compile Include="BusinessLogic.cs" />
     <Compile Include="Core\AdminAPI.cs" />
+    <Compile Include="Core\ServiceAPI\ProductsAPI.cs" />
     <Compile Include="Core\UserAPI.cs" />
+    <Compile Include="DBModel\OrderContext.cs" />
+    <Compile Include="DBModel\ProductContext.cs" />
     <Compile Include="DBModel\SessionContext.cs" />
     <Compile Include="DBModel\UserContext.cs" />
+    <Compile Include="Interfaces\IAddProduct.cs" />
+    <Compile Include="Interfaces\IProduct.cs" />
     <Compile Include="Interfaces\ISession.cs" />
+    <Compile Include="MainBL\AddProductBL.cs" />
+    <Compile Include="MainBL\ProductBL.cs" />
     <Compile Include="Migrations\202404161924238_InitialCreate.cs" />
     <Compile Include="Migrations\202404161924238_InitialCreate.Designer.cs">
       <DependentUpon>202404161924238_InitialCreate.cs</DependentUpon>
@@ -72,6 +79,14 @@
     <Compile Include="Migrations\202404162141378_Test2.cs" />
     <Compile Include="Migrations\202404162141378_Test2.Designer.cs">
       <DependentUpon>202404162141378_Test2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202406092143405_testtest.cs" />
+    <Compile Include="Migrations\202406092143405_testtest.Designer.cs">
+      <DependentUpon>202406092143405_testtest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202406092144389_testtest2.cs" />
+    <Compile Include="Migrations\202406092144389_testtest2.Designer.cs">
+      <DependentUpon>202406092144389_testtest2.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -103,6 +118,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202404162141378_Test2.resx">
       <DependentUpon>202404162141378_Test2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202406092143405_testtest.resx">
+      <DependentUpon>202406092143405_testtest.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202406092144389_testtest2.resx">
+      <DependentUpon>202406092144389_testtest2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

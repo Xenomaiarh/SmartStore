@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SmartStore.BussinesLogic.DBModel
+namespace SmartStore.BusinessLogic.DBModel
 {
     public class SessionContext : DbContext
     {

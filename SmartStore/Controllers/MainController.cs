@@ -61,6 +61,7 @@ namespace SmartStore.Controllers
                 LoginIP = HttpContext.Request.UserHostAddress,
                 LoginDateTime = DateTime.Now,
             };
+
             ResponseData response = session.UserLogin(UserLoginData);
 
             if (response != null && response.Status)
@@ -69,6 +70,7 @@ namespace SmartStore.Controllers
                 ControllerContext.HttpContext.Response.Cookies.Add(cookie);
                 return RedirectToAction("Index", "Home");
             }
+
             return View();
         }
 
